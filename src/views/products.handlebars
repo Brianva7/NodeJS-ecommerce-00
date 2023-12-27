@@ -1,0 +1,99 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+
+    <style>
+      h1 { text-align: center; } h3 { text-align: center; } .profileBox {
+      border: 1px solid; width: 500px; padding: 10px; margin: 10px auto; }
+      .profileBox p { margin: 5px 0; } .productsBox{ display: flex; flex-wrap:
+      wrap; border: 1px solid; padding: 10px; } .productBox { border: 1px solid;
+      padding: 10px; margin: 10px auto; width: 300px; } .paging { text-align:
+      center; } span { color: blue; } .adminSpan { color: red; }
+    </style>
+
+  </head>
+  <body>
+
+    <div>
+      {{#if user}}
+        <p><a href="http://localhost:8080/logout">Logout</a>
+          |
+          <a href="http://localhost:8080/">Home</a>
+          |
+          <a href="http://localhost:8080/profile">Profile</a>
+          |
+          <a href="http://localhost:8080/publish">Publish products</a>
+          |
+          <a href="http://localhost:8080/upload">Verify account</a>
+          {{#if isAdmin}}
+            |
+            <a href="http://localhost:8080/admin">Admin panel</a>
+          {{/if}}
+        </p>
+      {{else}}
+        <p><a href="http://localhost:8080/login">Login</a>
+          |
+          <a href="http://localhost:8080/register">Register</a></p>
+      {{/if}}
+
+    </div>
+
+    {{#if user}}
+      <div
+        id="cartLink"
+        data-value="{{user.cartLink}}"
+        style="display:none;"
+      ></div>
+      <div>
+        <h1>Welcome {{user.first_name}} to my super CSSed app</h1>
+      </div>
+      <div class="profileBox">
+        <h2>User level: {{user.role}}</h2>
+        <p>Name: {{user.first_name}}</p>
+        <p>Lastname: {{user.last_name}}</p>
+        <p>age: {{user.age}}</p>
+        <p>email: {{user.email}}</p>
+        <p><a href="http://localhost:8080/carts/{{user.cartLink}}">My cart</a></p>
+      </div>
+
+    {{/if}}
+
+    {{#if products}}
+
+      {{#if products.isValid}}
+        <div class="productsBox">
+          {{#each products.docs}}
+            <div class="productBox">
+              <h2>Product: {{this.name}}</h2>
+              <p>Price: {{this.price}}</p>
+              <p>Category: {{this.category}}</p>
+              <p>Stock: {{this.stock}}</p>
+              <p>Image: {{this.image}}</p>
+              <p>
+                <button onclick="addToCart('{{this._id}}')">Add to cart</button>
+              </p>
+            </div>
+
+          {{/each}}
+        </div>
+        <div class="paging">
+          {{#if products.previousLink}}
+            <a href="{{products.previousLink}}">Prev</a>
+          {{/if}}
+          &nbsp;
+          {{products.page}}
+          &nbsp;
+          {{#if products.nextLink}}
+            <a href="{{products.nextLink}}">Siguiente</a>
+          {{/if}}
+        </div>
+
+      {{/if}}
+    {{else}}
+      <h1>Error 404! </h1>
+    {{/if}}
+    <script src="/scripts/products.js"></script>
+  </body>
+</html>

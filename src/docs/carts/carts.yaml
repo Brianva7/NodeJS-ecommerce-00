@@ -1,0 +1,142 @@
+paths:
+  /api/carts/:
+    get:
+      summary: Get all carts
+      tags:
+        - carts
+      responses:
+        "200":
+          description: Returns all carts
+        "500":
+          description: Internal server error
+    post:
+      summary: Create a cart
+      tags:
+        - carts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Cart"
+      responses:
+        "200":
+          description: Returns a cart
+        "500":
+          description: Internal server error
+
+  /api/carts/{cid}:
+    get:
+      summary: Get a cart
+      tags:
+        - carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID of the cart
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns a cart
+        "500":
+          description: Internal server error
+    put:
+      summary: Empty cart
+      tags:
+        - carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID of the cart
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns a cart
+        "500":
+          description: Internal server error
+    delete:
+      summary: Delete a cart
+      tags:
+        - carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID of the cart
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns a cart
+        "500":
+          description: Internal server error
+  /api/carts/{cid}/products/{pid}:
+    put:
+      summary: Add a product to a cart
+      tags:
+        - carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID of the cart
+          schema:
+            type: string
+        - name: pid
+          in: path
+          required: true
+          description: ID of the product
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns a cart
+        "500":
+          description: Internal server error
+    delete:
+      summary: Remove a product from a cart
+      tags:
+        - carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID of the cart
+          schema:
+            type: string
+        - name: pid
+          in: path
+          required: true
+          description: ID of the product
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns a cart
+        "500":
+          description: Internal server error
+
+components:
+  schemas:
+    Cart:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: ID of the cart
+        products:
+          type: array
+          description: List of products in the cart
+          items:
+            type: object
+            properties:
+              product:
+                type: string
+                description: ID of the product
+              quantity:
+                type: number
+                description: Quantity of the product

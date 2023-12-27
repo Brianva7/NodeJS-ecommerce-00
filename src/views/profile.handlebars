@@ -1,0 +1,35 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{{title}}}</title>
+    <style>
+      h1 { text-align: center; } h3 { text-align: center; } .profileBox {
+      border: 1px solid; width: 500px; padding: 10px; margin: 10px auto; }
+      .profileBox p { margin: 5px 0; }
+    </style>
+  </head>
+  <body>
+    <div>
+
+      <p><a href="http://localhost:8080/logout">Logout</a>
+        |
+        <a href="http://localhost:8080/">Home</a>
+        |
+        <a href="http://localhost:8080/profile">Profile</a>
+        |
+        <a href="http://localhost:8080/products">Products</a>
+      </p>
+
+    </div>
+    <h1>Welcome {{user.first_name}} to my super CSSed app</h1>
+    <div class="profileBox">
+      <h2>User level: {{user.role}}</h2>
+      <h3>{{user.email}} profile</h3>
+      <p>Name: {{user.first_name}}</p>
+      <p>Lastname: {{user.last_name}}</p>
+      <p>Age: {{user.age}}</p>
+      <p>Email: {{user.email}}</p>
+    </div>
+  </body>
+</html>

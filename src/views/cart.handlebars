@@ -1,0 +1,75 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+
+    <style>
+      h1 { text-align: center; } h3 { text-align: center; } .profileBox {
+      border: 1px solid; width: 500px; padding: 10px; margin: 10px auto; }
+      .profileBox p { margin: 5px 0; } .productsBox{ display: flex; flex-wrap:
+      wrap; border: 1px solid; padding: 10px; } .productBox { border: 1px solid;
+      padding: 10px; margin: 10px auto; width: 300px; } .paging { text-align:
+      center; } span { color: blue; } .adminSpan { color: red; }
+    </style>
+  </head>
+  <body>
+    <div>
+      {{#if user}}
+        <p><a href="http://localhost:8080/logout">Logout</a>
+          |
+          <a href="http://localhost:8080/">Home</a>
+          |
+          <a href="http://localhost:8080/profile">Profile</a>
+          |
+          <a href="http://localhost:8080/products">Products</a>
+          |
+          <a href="http://localhost:8080/publish">Publish products</a>
+        </p>
+      {{else}}
+        <p><a href="http://localhost:8080/login">Login</a>
+          |
+          <a href="http://localhost:8080/register">Register</a></p>
+      {{/if}}
+    </div>
+
+    {{#if user}}
+      <div
+        id="cartLink"
+        data-value="{{user.cartLink}}"
+        style="display:none;"
+      ></div>
+      <div>
+        <h1>Welcome {{user.first_name}} to my super CSSed app</h1>
+      </div>
+      <div class="profileBox">
+        <h2>User level: {{user.role}}</h2>
+        <p>Name: {{user.first_name}}</p>
+        <p>Lastname: {{user.last_name}}</p>
+        <p>age: {{user.age}}</p>
+        <p>email: {{user.email}}</p>
+      </div>
+
+    {{/if}}
+    <h1>Cart view</h1>
+
+    <div class="productsBox">
+      {{#each products}}
+        <div class="productBox">
+          <p>Product: {{this.product.name}}</p>
+          <p>Price: {{this.product.price}}</p>
+          <p>Category: {{this.product.category}}</p>
+          <p>Stock: {{this.product.stock}}</p>
+          <p>Image: {{this.product.image}}</p>
+          <p>Quantity: {{this.quantity}}</p>
+          <button onclick="removeOne('{{this.product._id}}')">Remove from cart</button>
+        </div>
+      {{/each}}
+    </div>
+
+    {{#if products}}
+      <button onclick="purchaseCart()">Purchase</button>
+    {{/if}}
+    <script src="/scripts/products.js"></script>
+  </body>
+</html>

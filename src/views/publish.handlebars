@@ -1,0 +1,52 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{{title}}}</title>
+  </head>
+  <body>
+
+    <div>
+
+      <p><a href="http://localhost:8080/logout">Logout</a>
+        |
+        <a href="http://localhost:8080/">Home</a>
+        |
+        <a href="http://localhost:8080/profile">Profile</a>
+        |
+        <a href="http://localhost:8080/products">Products</a>
+      </p>
+
+    </div>
+
+    <div>
+
+      <form action="/api/products" method="POST">
+        <label for="name">Name: </label>
+
+        <input type="text" name="name" required />
+
+        <label for="category">Category: </label>
+
+        <input type="text" name="category" required />
+
+        <label for="price">Price: </label>
+
+        <input type="number" name="price" required />
+
+        <label for="stock">Stock: </label>
+
+        <input type="number" name="stock" required />
+
+        <label for="image">Image Url: </label>
+
+        <input type="text" name="image" required />
+
+        <button type="submit" name="submit">Create Product</button>
+
+      </form>
+
+    </div>
+
+  </body>
+</html>

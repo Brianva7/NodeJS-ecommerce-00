@@ -1,0 +1,78 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{{title}}}</title>
+
+        <style>
+      h1 { text-align: center; } h2 { text-align: center; } .containerBox{ display: flex; flex-wrap:
+      wrap; border: 1px solid; padding: 10px; } .itemBox { border: 1px solid;
+      padding: 10px; margin: 10px auto; width: 300px; } 
+    </style>
+
+  </head>
+  <body>
+
+    <div>
+
+      <p><a href="http://localhost:8080/logout">Logout</a>
+        |
+        <a href="http://localhost:8080/">Home</a>
+        |
+        <a href="http://localhost:8080/profile">Profile</a>
+        |
+        <a href="http://localhost:8080/products">Products</a>
+      </p>
+
+    </div>
+
+    <h1>Users</h1>
+
+    <div class="containerBox">
+      {{#each users.docs}}
+        <div class="itemBox">
+        <p>Name: {{this.first_name}} {{this.last_name}}</p>
+        <p>Age: {{this.age}}</p>
+        <p>Email: {{this.email}}</p>
+        <p>Role: {{this.role}}</p>
+        <p><button onclick="deleteUser('{{this._id}}')"> Delete</button>
+          ||
+          <button onclick="upgradeDegradeUser('{{this._id}}')">
+            Upgrade/degrade</button></p>
+        </div>
+      {{/each}}
+
+
+    </div>
+      <div>
+        <h3>Delete inactive users</h3>
+        <button
+          id="deleteInactiveUsers"
+          onclick="deleteInactiveUsers()"
+        >Delete</button>
+      </div>
+
+    <div>
+      <h2>Products</h2>
+      <div class="containerBox">
+          {{#each products.docs}}
+            <div class="itemBox">
+              <h2>Product: {{this.name}}</h2>
+              <p>Price: {{this.price}}</p>
+              <p>Category: {{this.category}}</p>
+              <p>Stock: {{this.stock}}</p>
+              <p>Image: {{this.image}}</p>
+              <p>owner: {{this.owner}}</p>
+              <p>
+                <button onclick="deleteProduct('{{this._id}}')">delete</button>
+              </p>
+            </div>
+
+          {{/each}}
+
+    </div>
+
+    <script src="/scripts/users.js"></script>
+    <script src="/scripts/products.js"></script>
+  </body>
+</html>

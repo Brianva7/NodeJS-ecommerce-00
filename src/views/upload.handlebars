@@ -1,0 +1,17 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{{title}}}</title>
+  </head>
+
+  <body>
+
+    <h1>Upload Document</h1>
+
+    <form action="/api/users/upload/{{user.id}}/documents" method="POST" enctype="multipart/form-data">
+    <label for="file">File: <input type="file" id="file" name="file" required></label>
+    <button type="submit">Upload</button>
+    </form>
+    
+  </body>
