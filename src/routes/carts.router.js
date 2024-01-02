@@ -3,6 +3,8 @@ import {
   checkUserAuthenticatedView,
   checkRoles,
   apidocsTestAuth,
+  checkBuyer,
+  loadProduct,
 } from "../middlewares/auth.middleware.js";
 import { Router } from "express";
 
@@ -40,7 +42,9 @@ router.put(
   "/:cid/products/:pid",
   apidocsTestAuth,
   checkUserAuthenticatedView,
-  checkRoles(["admin", "premium", "user"]),
+  checkRoles(["premium", "user"]),
+  loadProduct,
+  checkBuyer,
   cartController.addProductToCart
 );
 

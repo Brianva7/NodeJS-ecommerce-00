@@ -52,6 +52,14 @@ const checkOwner = (req, res, next) => {
   }
 };
 
+const checkBuyer = (req, res, next) => {
+  if (req.user.email === req.product.owner) {
+    return res.send(`Not authorized`);
+  } else {
+    next();
+  }
+};
+
 const apidocsTestAuth = (req, res, next) => {
   if (req.user) {
     next();
@@ -95,6 +103,7 @@ export {
   checkRoles,
   loadProduct,
   checkOwner,
+  checkBuyer,
   apidocsTestAuth,
   checkDocuments,
   loadUser,
