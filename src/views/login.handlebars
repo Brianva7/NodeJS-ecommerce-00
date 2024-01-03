@@ -7,9 +7,9 @@
   <body>
     <div>
       <p>
-        <a href="http://localhost:8080/login">login</a>
+        <a href="{{host}}/login">login</a>
         |
-        <a href="http://localhost:8080/register">register</a>
+        <a href="{{host}}/register">register</a>
       </p>
     </div>
     <form action="/api/sessions/login" method="POST">
@@ -19,9 +19,9 @@
       <input type="password" name="password" required />
       <button type="submit" name="submit">Login</button>
     </form>
-    <p><a href="http://localhost:8080/forgotpassword">¿Forgot your password?</a></p>
+    <p><a href="{{host}}/forgotpassword">¿Forgot your password?</a></p>
     <div>
-      <p><a href="http://localhost:8080/api/sessions/github">Login with GitHub
+      <p><a href="{{host}}/api/sessions/github">Login with GitHub
         </a>
       </p>
     </div>

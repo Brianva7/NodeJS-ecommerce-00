@@ -1,7 +1,7 @@
 import cartsServices from "../services/carts.service.js";
 import productsServices from "../services/products.service.js";
 import usersServices from "../services/users.service.js";
-import { getUserDto } from "../DAO/dto/user.dto.js";
+import dotenvConfig from "../config/dotenv.config.js";
 
 export default class viewsController {
   static getProducts = async (req, res) => {
@@ -35,9 +35,13 @@ export default class viewsController {
         products.previousLink = `/products?page=${products.previousPage}`;
       }
 
+      const host = dotenvConfig.publicNetwork;
+
       result.products = products;
 
       result.user = user;
+
+      result.host = host;
 
       res.render("products", result);
     } catch (error) {
@@ -51,6 +55,8 @@ export default class viewsController {
     try {
       let result = await cartsServices.getCartById(cid);
       result.user = user;
+      const host = dotenvConfig.publicNetwork;
+      result.host = host;
       res.render("cart", result);
     } catch (error) {
       res.render("products", { error });
@@ -58,17 +64,19 @@ export default class viewsController {
   };
 
   static login = async (req, res) => {
+    const host = dotenvConfig.publicNetwork;
     let error = req.session.error;
     if (req.session.user) {
       res.redirect("/products");
     } else {
       req.session.error = false;
-      res.render("login", { error });
+      res.render("login", { error, host });
     }
   };
 
   static register = async (req, res) => {
     let error = req.session.error;
+
     if (req.session.user) {
       res.redirect("/profile");
     } else {
@@ -83,8 +91,9 @@ export default class viewsController {
     } else {
       let user = req.session.user;
       let isAdmin = user.role === "admin";
+      const host = dotenvConfig.publicNetwork;
 
-      res.render("profile", { user, isAdmin });
+      res.render("profile", { user, isAdmin, host });
     }
   };
 
@@ -103,10 +112,11 @@ export default class viewsController {
   };
 
   static publish = async (req, res) => {
+    const host = dotenvConfig.publicNetwork;
     if (!req.session.user) {
       res.redirect("/login");
     } else {
-      res.render("publish");
+      res.render("publish", { host });
     }
   };
 
@@ -117,12 +127,14 @@ export default class viewsController {
       let user = req.session.user;
       let users = await usersServices.getUsers();
       let products = await productsServices.getProducts();
+      const host = dotenvConfig.publicNetwork;
 
       let result = {};
 
       result.user = user;
       result.users = users;
       result.products = products;
+      result.host = host;
 
       res.render("admin", result);
     }
@@ -151,7 +163,8 @@ export default class viewsController {
       res.redirect("/login");
     } else {
       const user = req.session.user;
-      res.render("upload", { user });
+      const host = dotenvConfig.publicNetwork;
+      res.render("upload", { user, host });
     }
   };
 }

@@ -7,9 +7,9 @@
   <body>
     <div>
       <p>
-        <a href="http://localhost:8080/login">login</a>
+        <a href="{{host}}/login">login</a>
         |
-        <a href="http://localhost:8080/register">register</a>
+        <a href="{{host}}/register">register</a>
       </p>
     </div>
     <form action="/api/sessions/register" method="POST">
@@ -26,7 +26,7 @@
       <button type="submit" name="submit">Register</button>
     </form>
     <div>
-      <p><a href="http://localhost:8080/api/sessions/github">Login with GitHub</a></p>
+      <p><a href="{{host}}/api/sessions/github">Login with GitHub</a></p>
     </div>
     {{#if error}}
       <p style="color: red">Invalid credentials / Email already in use</p>

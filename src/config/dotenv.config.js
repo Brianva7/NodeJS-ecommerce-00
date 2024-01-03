@@ -14,4 +14,5 @@ export default {
   persistence: process.env.PERSISTENCE,
   nodemailerUser: process.env.NODEMAILER_USER,
   nodemailerPass: process.env.NODEMAILER_PASS,
+  publicNetwork: process.env.PUBLIC_NETWORK,
 };

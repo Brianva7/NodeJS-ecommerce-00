@@ -16,20 +16,20 @@
   <body>
     <div>
       {{#if user}}
-        <p><a href="http://localhost:8080/logout">Logout</a>
+        <p><a href="{{host}}/logout">Logout</a>
           |
-          <a href="http://localhost:8080/">Home</a>
+          <a href="{{host}}/">Home</a>
           |
-          <a href="http://localhost:8080/profile">Profile</a>
+          <a href="{{host}}/profile">Profile</a>
           |
-          <a href="http://localhost:8080/products">Products</a>
+          <a href="{{host}}/products">Products</a>
           |
-          <a href="http://localhost:8080/publish">Publish products</a>
+          <a href="{{host}}/publish">Publish products</a>
         </p>
       {{else}}
-        <p><a href="http://localhost:8080/login">Login</a>
+        <p><a href="{{host}}/login">Login</a>
           |
-          <a href="http://localhost:8080/register">Register</a></p>
+          <a href="{{host}}/register">Register</a></p>
       {{/if}}
     </div>
 
