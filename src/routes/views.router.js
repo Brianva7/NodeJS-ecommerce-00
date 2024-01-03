@@ -1,4 +1,8 @@
 import { Router } from "express";
+import {
+  checkUserAuthenticatedView,
+  checkRoles,
+} from "../middlewares/auth.middleware.js";
 import viewsController from "../controllers/view.controller.js";
 
 const router = Router();
@@ -19,7 +23,12 @@ router.get("/", viewsController.home);
 
 router.get("/publish", viewsController.publish);
 
-router.get("/admin", viewsController.adminPanel);
+router.get(
+  "/admin",
+  checkUserAuthenticatedView,
+  checkRoles(["admin"]),
+  viewsController.adminPanel
+);
 
 router.get("/forgotpassword", viewsController.forgotPassword);
 
