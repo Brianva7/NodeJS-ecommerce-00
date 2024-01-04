@@ -5,7 +5,7 @@ const addToCart = async (productId) => {
   try {
     if (productId && cartLink) {
       const resp = await fetch(
-        `pf-coderhouse-backend-production.up.railway.app/api/carts/${cartLink}/products/${productId}`,
+        `//pf-coderhouse-backend-production.up.railway.app/api/carts/${cartLink}/products/${productId}`,
         {
           method: "PUT",
         }
