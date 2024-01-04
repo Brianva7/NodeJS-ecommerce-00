@@ -5,7 +5,7 @@ const addToCart = async (productId) => {
   try {
     if (productId && cartLink) {
       const resp = await fetch(
-        `http://localhost:8080/api/carts/${cartLink}/products/${productId}`,
+        `pf-coderhouse-backend-production.up.railway.app/api/carts/${cartLink}/products/${productId}`,
         {
           method: "PUT",
         }
@@ -27,7 +27,7 @@ const removeOne = async (productId) => {
   try {
     if (productId && cartLink) {
       const resp = await fetch(
-        `http://localhost:8080/api/carts/${cartLink}/products/${productId}`,
+        `pf-coderhouse-backend-production.up.railway.app/api/carts/${cartLink}/products/${productId}`,
         {
           method: "DELETE",
         }
@@ -48,7 +48,7 @@ const purchaseCart = async () => {
   try {
     if (cartLink) {
       const resp = await fetch(
-        `http://localhost:8080/api/carts/${cartLink}/purchase`,
+        `pf-coderhouse-backend-production.up.railway.app/api/carts/${cartLink}/purchase`,
         {
           method: "POST",
         }
@@ -56,22 +56,31 @@ const purchaseCart = async () => {
       const result = await resp.json();
       console.log(result);
       if (result.payload && result.payload.status === "success") {
-        await fetch(`http://localhost:8080/api/carts/${cartLink}`, {
-          method: "PUT",
-        });
+        await fetch(
+          `pf-coderhouse-backend-production.up.railway.app/api/carts/${cartLink}`,
+          {
+            method: "PUT",
+          }
+        );
 
-        await fetch(`http://localhost:8080/api/mail/purchasemail`, {
-          method: "POST",
-        });
+        await fetch(
+          `pf-coderhouse-backend-production.up.railway.app/api/mail/purchasemail`,
+          {
+            method: "POST",
+          }
+        );
 
         location.reload();
       } else {
         console.log(result.payload.message);
         console.log(result.payload.insufficientStockProduct);
 
-        await fetch(`http://localhost:8080/api/mail/purchasemail`, {
-          method: "POST",
-        });
+        await fetch(
+          `pf-coderhouse-backend-production.up.railway.app/api/mail/purchasemail`,
+          {
+            method: "POST",
+          }
+        );
       }
     }
   } catch (error) {
@@ -82,7 +91,7 @@ const purchaseCart = async () => {
 const deleteProduct = async (productId) => {
   try {
     const resp = await fetch(
-      `http://localhost:8080/api/products/${productId}`,
+      `pf-coderhouse-backend-production.up.railway.app/api/products/${productId}`,
       {
         method: "DELETE",
       }
