@@ -27,7 +27,7 @@ const removeOne = async (productId) => {
   try {
     if (productId && cartLink) {
       const resp = await fetch(
-        `pf-coderhouse-backend-production.up.railway.app/api/carts/${cartLink}/products/${productId}`,
+        `//pf-coderhouse-backend-production.up.railway.app/api/carts/${cartLink}/products/${productId}`,
         {
           method: "DELETE",
         }
@@ -48,7 +48,7 @@ const purchaseCart = async () => {
   try {
     if (cartLink) {
       const resp = await fetch(
-        `pf-coderhouse-backend-production.up.railway.app/api/carts/${cartLink}/purchase`,
+        `//pf-coderhouse-backend-production.up.railway.app/api/carts/${cartLink}/purchase`,
         {
           method: "POST",
         }
@@ -57,14 +57,14 @@ const purchaseCart = async () => {
       console.log(result);
       if (result.payload && result.payload.status === "success") {
         await fetch(
-          `pf-coderhouse-backend-production.up.railway.app/api/carts/${cartLink}`,
+          `//pf-coderhouse-backend-production.up.railway.app/api/carts/${cartLink}`,
           {
             method: "PUT",
           }
         );
 
         await fetch(
-          `pf-coderhouse-backend-production.up.railway.app/api/mail/purchasemail`,
+          `//pf-coderhouse-backend-production.up.railway.app/api/mail/purchasemail`,
           {
             method: "POST",
           }
@@ -76,7 +76,7 @@ const purchaseCart = async () => {
         console.log(result.payload.insufficientStockProduct);
 
         await fetch(
-          `pf-coderhouse-backend-production.up.railway.app/api/mail/purchasemail`,
+          `//pf-coderhouse-backend-production.up.railway.app/api/mail/purchasemail`,
           {
             method: "POST",
           }
@@ -91,7 +91,7 @@ const purchaseCart = async () => {
 const deleteProduct = async (productId) => {
   try {
     const resp = await fetch(
-      `pf-coderhouse-backend-production.up.railway.app/api/products/${productId}`,
+      `//pf-coderhouse-backend-production.up.railway.app/api/products/${productId}`,
       {
         method: "DELETE",
       }

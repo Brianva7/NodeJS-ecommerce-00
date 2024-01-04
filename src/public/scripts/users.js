@@ -1,7 +1,7 @@
 const deleteUser = async (userId) => {
   try {
     const resp = await fetch(
-      `pf-coderhouse-backend-production.up.railway.app/api/users/${userId}`,
+      `//pf-coderhouse-backend-production.up.railway.app/api/users/${userId}`,
       {
         method: "DELETE",
       }
@@ -17,7 +17,7 @@ const deleteUser = async (userId) => {
 const upgradeDegradeUser = async (userId) => {
   try {
     const resp = await fetch(
-      `pf-coderhouse-backend-production.up.railway.app/api/users/premium/${userId}`,
+      `//pf-coderhouse-backend-production.up.railway.app/api/users/premium/${userId}`,
       {
         method: "PUT",
       }
@@ -33,7 +33,7 @@ const upgradeDegradeUser = async (userId) => {
 const deleteInactiveUsers = async () => {
   try {
     const resp = await fetch(
-      `pf-coderhouse-backend-production.up.railway.app/api/users/inactive/delete`,
+      `//pf-coderhouse-backend-production.up.railway.app/api/users/inactive/delete`,
       {
         method: "DELETE",
       }
