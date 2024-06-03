@@ -1,3 +1,5 @@
+const cartHost = "http://localhost:8080/api/carts/";
+
 const addToCart = async (productId) => {
   const cartLink = document
     .getElementById("cartLink")
@@ -5,7 +7,7 @@ const addToCart = async (productId) => {
   try {
     if (productId && cartLink) {
       const resp = await fetch(
-        `//pf-coderhouse-backend-production.up.railway.app/api/carts/${cartLink}/products/${productId}`,
+        `${cartHost}/${cartLink}/products/${productId}`,
         {
           method: "PUT",
         }
@@ -27,7 +29,7 @@ const removeOne = async (productId) => {
   try {
     if (productId && cartLink) {
       const resp = await fetch(
-        `//pf-coderhouse-backend-production.up.railway.app/api/carts/${cartLink}/products/${productId}`,
+        `${cartHost}/${cartLink}/products/${productId}`,
         {
           method: "DELETE",
         }
@@ -47,21 +49,15 @@ const purchaseCart = async () => {
     .getAttribute("data-value");
   try {
     if (cartLink) {
-      const resp = await fetch(
-        `//pf-coderhouse-backend-production.up.railway.app/api/carts/${cartLink}/purchase`,
-        {
-          method: "POST",
-        }
-      );
+      const resp = await fetch(`${cartHost}/${cartLink}/purchase`, {
+        method: "POST",
+      });
       const result = await resp.json();
       console.log(result);
       if (result.payload && result.payload.status === "success") {
-        await fetch(
-          `//pf-coderhouse-backend-production.up.railway.app/api/carts/${cartLink}`,
-          {
-            method: "PUT",
-          }
-        );
+        await fetch(`${cartHost}/${cartLink}`, {
+          method: "PUT",
+        });
 
         await fetch(
           `//pf-coderhouse-backend-production.up.railway.app/api/mail/purchasemail`,

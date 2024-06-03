@@ -3,30 +3,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{{title}}}</title>
+
+    <style>
+      .topbar { text-align: center; } .form { display: flex; flex-direction:
+      column; width: 50%; margin: 0 auto; gap: 10px; } .bottom { text-align:
+      center; }
+    </style>
   </head>
   <body>
-    <div>
+    <div class="topbar">
       <p>
         <a href="{{host}}/login">login</a>
         |
         <a href="{{host}}/register">register</a>
       </p>
     </div>
-    <form action="/api/sessions/login" method="POST">
+    <form action="/api/sessions/login" method="POST" class="form">
       <label for="email">Email</label>
       <input type="email" name="email" required />
       <label for="password">Password</label>
       <input type="password" name="password" required />
       <button type="submit" name="submit">Login</button>
     </form>
-    <p><a href="{{host}}/forgotpassword">¿Forgot your password?</a></p>
-    <div>
-      <p><a href="{{host}}/api/sessions/github">Login with GitHub
-        </a>
-      </p>
+    <div class="bottom">
+
+      <p><a href="{{host}}/forgotpassword">¿Forgot your password?</a></p>
+      <div>
+        <p><a href="{{host}}/api/sessions/github">Login with GitHub
+          </a>
+        </p>
+      </div>
+      {{#if error}}
+        <p style="color: red">Invalid credentials</p>
+      {{/if}}
     </div>
-    {{#if error}}
-      <p style="color: red">Invalid credentials</p>
-    {{/if}}
   </body>
 </html>

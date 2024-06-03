@@ -3,10 +3,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{{title}}}</title>
+
+    <style>
+      .topbar { text-align: center; } .form { display: flex; flex-direction:
+      column; width: 50%; margin: 0 auto; gap: 10px; } .bottom { text-align:
+      center; }
+    </style>
   </head>
   <body>
 
-    <div>
+    <div class="topbar">
 
       <p><a href="{{host}}/logout">Logout</a>
         |
@@ -21,7 +27,7 @@
 
     <div>
 
-      <form action="/api/products" method="POST">
+      <form action="/api/products" method="POST" class="form">
         <label for="name">Name: </label>
 
         <input type="text" name="name" required />

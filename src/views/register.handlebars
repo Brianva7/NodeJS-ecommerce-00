@@ -3,16 +3,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{{title}}}</title>
+
+    <style>
+      .form { display: flex; flex-direction: column; width: 50%; margin: 0 auto;
+      gap: 10px; } .topbar { text-align: center; } .bottom { text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <div>
+    <div class="topbar">
       <p>
         <a href="{{host}}/login">login</a>
         |
         <a href="{{host}}/register">register</a>
       </p>
     </div>
-    <form action="/api/sessions/register" method="POST">
+    <form action="/api/sessions/register" method="POST" class="form">
       <label for="first_name">First name: </label>
       <input type="text" name="first_name" required />
       <label for="last_name">Last name: </label>
@@ -25,7 +31,7 @@
       <input type="password" name="password" required />
       <button type="submit" name="submit">Register</button>
     </form>
-    <div>
+    <div class="bottom">
       <p><a href="{{host}}/api/sessions/github">Login with GitHub</a></p>
     </div>
     {{#if error}}

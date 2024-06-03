@@ -3,14 +3,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{{title}}}</title>
+
+    <style>
+      .form { display: flex; flex-direction: column; width: 50%; margin: 0 auto; gap: 10px; } .h1 { text-align: center; }  .file { text-align: center; } .file { display: flex; flex-direction: column; width: 75%; margin: 0 auto; gap: 10px; } h1 { text-align: center; } .topbar { text-align: center; }
+    </style>
+
+
   </head>
 
   <body>
 
+    <div class="topbar">
+
+      <p><a href="{{host}}/logout">Logout</a>
+        |
+        <a href="{{host}}/">Home</a>
+        |
+        <a href="{{host}}/profile">Profile</a>
+        |
+        <a href="{{host}}/products">Products</a>
+      </p>
+
+    </div>
+
     <h1>Upload Document</h1>
 
-    <form action="/api/users/upload/{{user.id}}/documents" method="POST" enctype="multipart/form-data">
-    <label for="file">File: <input type="file" id="file" name="file" required></label>
+    <form action="/api/users/upload/{{user.id}}/documents" method="POST" enctype="multipart/form-data" class="form">
+    <label for="file" class="file">File: <input type="file" id="file" name="file" required></label>
     <button type="submit">Upload</button>
     </form>
     
