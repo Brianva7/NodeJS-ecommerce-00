@@ -1,5 +1,5 @@
-// const host = "https://node-js-ecommerce-00.vercel.app/";
-const host = "http://localhost:8080/api/carts/";
+const host = "https://node-js-ecommerce-00.vercel.app/";
+// const host = "http://localhost:8080/api/carts/";
 
 const addToCart = async (productId) => {
   const cartLink = document
