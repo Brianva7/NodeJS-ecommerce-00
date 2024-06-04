@@ -1,5 +1,4 @@
 const host = "https://node-js-ecommerce-00.vercel.app/";
-// const host = "http://localhost:8080/api/carts/";
 
 const addToCart = async (productId) => {
   const cartLink = document
@@ -7,6 +6,7 @@ const addToCart = async (productId) => {
     .getAttribute("data-value");
   try {
     if (productId && cartLink) {
+<<<<<<< HEAD
       const resp = await fetch(
         `${host}/api/carts/${cartLink}/products/${productId}`,
         {
@@ -16,6 +16,11 @@ const addToCart = async (productId) => {
           },
         }
       );
+=======
+      const resp = await fetch(`${host}/${cartLink}/products/${productId}`, {
+        method: "PUT",
+      });
+>>>>>>> b4c9fb6558042ac88571ae825d723cf6e376c055
       const result = await resp.json();
       console.log(result);
     }
