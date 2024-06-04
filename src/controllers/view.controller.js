@@ -35,13 +35,13 @@ export default class viewsController {
         products.previousLink = `/products?page=${products.previousPage}`;
       }
 
-      const host = dotenvConfig.publicNetwork;
+      // const host = dotenvConfig.publicNetwork;
 
       result.products = products;
 
       result.user = user;
 
-      result.host = host;
+      // result.host = host;
 
       res.render("products", result);
     } catch (error) {

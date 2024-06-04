@@ -13,9 +13,9 @@
   <body>
     <div class="topbar">
       <p>
-        <a href="{{host}}/login">login</a>
+        <a href="/login">login</a>
         |
-        <a href="{{host}}/register">register</a>
+        <a href="/register">register</a>
       </p>
     </div>
     <form action="/api/sessions/register" method="POST" class="form">
@@ -32,7 +32,7 @@
       <button type="submit" name="submit">Register</button>
     </form>
     <div class="bottom">
-      <p><a href="{{host}}/api/sessions/github">Login with GitHub</a></p>
+      <p><a href="/api/sessions/github">Login with GitHub</a></p>
     </div>
     {{#if error}}
       <p style="color: red">Invalid credentials / Email already in use</p>

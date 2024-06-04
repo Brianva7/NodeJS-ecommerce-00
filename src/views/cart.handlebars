@@ -16,20 +16,20 @@
   <body>
     <div>
       {{#if user}}
-        <p><a href="{{host}}/logout">Logout</a>
+        <p><a href="/logout">Logout</a>
           |
-          <a href="{{host}}/">Home</a>
+          <a href="/"></a>Home</a>
           |
-          <a href="{{host}}/profile">Profile</a>
+          <a href="/profile"></a>profile">Profile</a>
           |
-          <a href="{{host}}/products">Products</a>
+          <a href="/products">Products</a>
           |
-          <a href="{{host}}/publish">Publish products</a>
+          <a href="/publish">Publish products</a>
         </p>
       {{else}}
-        <p><a href="{{host}}/login">Login</a>
+        <p><a href="/login">Login</a>
           |
-          <a href="{{host}}/register">Register</a></p>
+          <a href="/register">Register</a></p>
       {{/if}}
     </div>
 

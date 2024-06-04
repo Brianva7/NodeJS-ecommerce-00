@@ -19,24 +19,24 @@
 
     <div class="topbar">
       {{#if user}}
-        <p><a href="{{host}}/logout">Logout</a>
+        <p><a href="/logout">Logout</a>
           |
-          <a href="{{host}}/">Home</a>
+          <a href="/">Home</a>
           |
-          <a href="{{host}}/profile">Profile</a>
+          <a href="/profile">Profile</a>
           |
-          <a href="{{host}}/publish">Publish products</a>
+          <a href="/publish">Publish products</a>
           |
-          <a href="{{host}}/upload">Verify account</a>
+          <a href="/upload">Verify account</a>
           {{#if isAdmin}}
             |
-            <a href="{{host}}/admin">Admin panel</a>
+            <a href="/admin">Admin panel</a>
           {{/if}}
         </p>
       {{else}}
-        <p><a href="{{host}}/login">Login</a>
+        <p><a href="/login">Login</a>
           |
-          <a href="{{host}}/register">Register</a></p>
+          <a href="/register">Register</a></p>
       {{/if}}
 
     </div>
@@ -56,7 +56,7 @@
         <p>Lastname: {{user.last_name}}</p>
         <p>age: {{user.age}}</p>
         <p>email: {{user.email}}</p>
-        <p><a href="{{host}}/carts/{{user.cartLink}}">My cart</a></p>
+        <p><a href="/carts/{{user.cartLink}}">My cart</a></p>
       </div>
 
     {{/if}}
