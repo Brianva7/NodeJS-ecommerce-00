@@ -7,12 +7,15 @@ const addToCart = async (productId) => {
     .getAttribute("data-value");
   try {
     if (productId && cartLink) {
-      const resp = await fetch(`${host}/${cartLink}/products/${productId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const resp = await fetch(
+        `${host}/api/carts/${cartLink}/products/${productId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const result = await resp.json();
       console.log(result);
     }
@@ -27,9 +30,12 @@ const removeOne = async (productId) => {
     .getAttribute("data-value");
   try {
     if (productId && cartLink) {
-      const resp = await fetch(`${host}/${cartLink}/products/${productId}`, {
-        method: "DELETE",
-      });
+      const resp = await fetch(
+        `${host}/api/carts/${cartLink}/products/${productId}`,
+        {
+          method: "DELETE",
+        }
+      );
       const result = await resp.json();
       console.log(result);
     }
@@ -45,13 +51,13 @@ const purchaseCart = async () => {
     .getAttribute("data-value");
   try {
     if (cartLink) {
-      const resp = await fetch(`${host}/${cartLink}/purchase`, {
+      const resp = await fetch(`${host}/api/carts/${cartLink}/purchase`, {
         method: "POST",
       });
       const result = await resp.json();
       console.log(result);
       if (result.payload && result.payload.status === "success") {
-        await fetch(`${host}/${cartLink}`, {
+        await fetch(`${host}/api/carts/${cartLink}`, {
           method: "PUT",
         });
 
@@ -64,7 +70,7 @@ const purchaseCart = async () => {
         console.log(result.payload.message);
         console.log(result.payload.insufficientStockProduct);
 
-        await fetch(`${host}/purchasemail`, {
+        await fetch(`${host}/api/mail/purchasemail`, {
           method: "POST",
         });
       }
@@ -76,7 +82,7 @@ const purchaseCart = async () => {
 
 const deleteProduct = async (productId) => {
   try {
-    const resp = await fetch(`${host}/${productId}`, {
+    const resp = await fetch(`${host}/api/products/${productId}`, {
       method: "DELETE",
     });
     const result = await resp.json();
