@@ -1,11 +1,9 @@
+const host = "https://node-js-ecommerce-00.vercel.app/";
 const deleteUser = async (userId) => {
   try {
-    const resp = await fetch(
-      `//pf-coderhouse-backend-production.up.railway.app/api/users/${userId}`,
-      {
-        method: "DELETE",
-      }
-    );
+    const resp = await fetch(`${host}/api/users/${userId}`, {
+      method: "DELETE",
+    });
     const result = await resp.json();
     console.log(result);
     location.reload();
@@ -16,12 +14,9 @@ const deleteUser = async (userId) => {
 
 const upgradeDegradeUser = async (userId) => {
   try {
-    const resp = await fetch(
-      `//pf-coderhouse-backend-production.up.railway.app/api/users/premium/${userId}`,
-      {
-        method: "PUT",
-      }
-    );
+    const resp = await fetch(`${host}/api/users/premium/${userId}`, {
+      method: "PUT",
+    });
     const result = await resp.json();
     console.log(result);
     location.reload();
@@ -32,12 +27,9 @@ const upgradeDegradeUser = async (userId) => {
 
 const deleteInactiveUsers = async () => {
   try {
-    const resp = await fetch(
-      `//pf-coderhouse-backend-production.up.railway.app/api/users/inactive/delete`,
-      {
-        method: "DELETE",
-      }
-    );
+    const resp = await fetch(`${host}/api/users/inactive/delete`, {
+      method: "DELETE",
+    });
     const result = await resp.json();
     console.log(result);
     location.reload();
