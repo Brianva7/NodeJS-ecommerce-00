@@ -8,9 +8,6 @@ const addToCart = async (productId) => {
     if (productId && cartLink) {
       const resp = await fetch(`${host}/${cartLink}/products/${productId}`, {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
       });
       const result = await resp.json();
       console.log(result);
