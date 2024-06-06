@@ -1,4 +1,4 @@
-const host = "https://node-js-ecommerce-00.vercel.app/";
+const host = "https://node-js-ecommerce-00.vercel.app";
 
 const addToCart = async (productId) => {
   const cartLink = document
